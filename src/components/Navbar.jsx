@@ -1,7 +1,13 @@
 import logo from '../assets/images/logo.png'
-import { Link } from 'react-router';
+import { NavLink, Link } from 'react-router';
 
 export default function Navbar() {
+    const linkClass = ({ isActive }) =>
+        isActive ?
+            'bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
+            :
+            'text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
+
     return (
         <nav className="bg-indigo-700 border-b border-indigo-500">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -9,7 +15,7 @@ export default function Navbar() {
                     <div
                         className="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
                     >
-                        <Link className="flex flex-shrink-0 items-center mr-4" to="/index.html">
+                        <Link to="/">
                             <img
                                 className="h-10 w-auto"
                                 src={logo}
@@ -18,24 +24,24 @@ export default function Navbar() {
                         </Link>
                         <div className="md:ml-auto">
                             <div className="flex space-x-2">
-                                <Link
+                                <NavLink
                                     to="/"
-                                    className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                                    className={linkClass}
                                 >
                                     Home
-                                </Link>
-                                <Link
+                                </NavLink>
+                                <NavLink
                                     to="/jobs"
-                                    className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                                    className={linkClass}
                                 >
                                     Jobs
-                                </Link>
-                                <Link
+                                </NavLink>
+                                <NavLink
                                     to="/add-job"
-                                    className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                                    className={linkClass}
                                 >
                                     Add Job
-                                </Link>
+                                </NavLink>
                             </div>
                         </div>
                     </div>
